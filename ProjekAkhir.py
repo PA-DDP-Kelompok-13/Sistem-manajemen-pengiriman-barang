@@ -1,7 +1,21 @@
 # Data Penyimpanan
 pengiriman_list = []
-users = {"admin": "admin123", "customer": "customer123"}
+users = {"admin": "admin123"}
 current_role = None
+
+# Fungsi untuk Mendaftar Customer
+def register_customer():
+    username = input("Masukkan username baru: ")
+    if username in users:
+        print("Username sudah terdaftar. Silakan gunakan username lain.")
+        return
+    password = input("Masukkan password: ")
+    password_confirm = input("Konfirmasi password: ")
+    if password != password_confirm:
+        print("Password tidak sesuai. Silakan coba lagi.")
+        return
+    users[username] = password
+    print("Pendaftaran berhasil. Silakan login.")
 
 # Fungsi Login
 def login(username, password):
@@ -72,47 +86,61 @@ def tracking_pengiriman():
     print("Pengiriman tidak ditemukan.")
 
 # Program Utama
-print("Silakan Login")
-username = input("Username: ")
-password = input("Password: ")
+while True:
+    print("=== Sistem Manajemen Pengiriman Barang ===")
+    print("1. Login sebagai Admin")
+    print("2. Pendaftaran Customer")
+    print("3. Keluar")
 
-if login(username, password):
-    while True:
-        if current_role == "Admin":
-            print("\n=== Menu Admin ===")
-            print("1. Tambah Pengiriman")
-            print("2. Lihat Pengiriman")
-            print("3. Update Status Pengiriman")
-            print("4. Hapus Pengiriman")
-            print("5. Logout")
+    choice = input("Pilih opsi: ")
+    if choice == "1":
+        username = "admin"
+        password = input("Password: ")
+        if login(username, password):
+            while True:
+                print("\n=== Menu Admin ===")
+                print("1. Tambah Pengiriman")
+                print("2. Lihat Pengiriman")
+                print("3. Update Status Pengiriman")
+                print("4. Hapus Pengiriman")
+                print("5. Logout")
 
-            choice = input("Pilih opsi: ")
-            if choice == "1":
-                tambah_pengiriman()
-            elif choice == "2":
-                lihat_pengiriman()
-            elif choice == "3":
-                update_pengiriman()
-            elif choice == "4":
-                hapus_pengiriman()
-            elif choice == "5":
-                print("Logout berhasil.")
-                break
-            else:
-                print("Opsi tidak valid. Coba lagi.")
+                admin_choice = input("Pilih opsi: ")
+                if admin_choice == "1":
+                    tambah_pengiriman()
+                elif admin_choice == "2":
+                    lihat_pengiriman()
+                elif admin_choice == "3":
+                    update_pengiriman()
+                elif admin_choice == "4":
+                    hapus_pengiriman()
+                elif admin_choice == "5":
+                    print("Logout berhasil.")
+                    break
+                else:
+                    print("Opsi tidak valid. Coba lagi.")
 
-        elif current_role == "Customer":
-            print("\n=== Menu Customer ===")
-            print("1. Tracking Pengiriman")
-            print("2. Logout")
+    elif choice == "2":
+        register_customer()
+        username = input("Masukkan username: ")
+        password = input("Masukkan password: ")
+        if login(username, password):
+            while True:
+                print("\n=== Menu Customer ===")
+                print("1. Tracking Pengiriman")
+                print("2. Logout")
 
-            choice = input("Pilih opsi: ")
-            if choice == "1":
-                tracking_pengiriman()
-            elif choice == "2":
-                print("Logout berhasil.")
-                break
-            else:
-                print("Opsi tidak valid. Coba lagi.")
-else:
-    print("Login gagal.")
+                customer_choice = input("Pilih opsi: ")
+                if customer_choice == "1":
+                    tracking_pengiriman()
+                elif customer_choice == "2":
+                    print("Logout berhasil.")
+                    break
+                else:
+                    print("Opsi tidak valid. Coba lagi.")
+
+    elif choice == "3":
+        print("Terima kasih! Program selesai.")
+        break
+    else:
+        print("Opsi tidak valid. Coba lagi.")
