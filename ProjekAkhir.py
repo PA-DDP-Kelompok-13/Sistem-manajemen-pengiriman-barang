@@ -97,8 +97,12 @@ def tracking_pengiriman():
 def customer_service():
     table = PrettyTable()
     table.field_names = ["Kontak", "Informasi"]
-    table.add_row(["Nomor WhatsApp", "085754752258"])
+    table.add_row(["1. Nomor WhatsApp", "-085754752258"])
     table.add_row(["Email", "ayarighen@gmail.com"])
+    table.field_names = ["Kontak", "Informasi"]
+    table.add_row(["2. Nomor WhatsApp", "-085754460827"])
+    table.add_row(["Email", "irdhan.faudzan@gmail.com"])
+
     print("\n=== Customer Service ===")
     print(table)
 
