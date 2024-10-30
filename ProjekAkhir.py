@@ -1,15 +1,37 @@
 from prettytable import PrettyTable
 import pwinput
+import csv
+import os
 
 # Data Penyimpanan
 pengiriman_list = []
 users = {"admin": "admin123"}
 current_role = None
+csv_file = "datapengiriman.csv"
+
+# Fungsi untuk memuat data dari file CSV
+def load_data_from_csv():
+    if os.path.exists(csv_file):
+        with open(csv_file, mode='r', newline='') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                pengiriman_list.append(row)
+
+# Fungsi untuk menyimpan data ke file CSV
+def save_data_to_csv():
+    with open(csv_file, mode='w', newline='') as file:
+        fieldnames = ["id", "barang", "tujuan", "penerima", "status"]
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(pengiriman_list)
+
+# Load data dari CSV saat program dimulai
+load_data_from_csv()
 
 # Fungsi untuk Mendaftar Customer
 def register_customer():
     username = input("Masukkan username baru: ")
-    if username in users:
+    if username in users: 
         print("Username sudah terdaftar. Silakan gunakan menu login.")
         return False
     password = pwinput.pwinput("Masukkan password: ")
@@ -44,6 +66,7 @@ def tambah_pengiriman():
     status = "Dalam Proses"
     pengiriman = {"id": id_pengiriman, "barang": barang, "tujuan": tujuan, "penerima": penerima, "status": status}
     pengiriman_list.append(pengiriman)
+    save_data_to_csv()
     print("Pengiriman berhasil ditambahkan.")
 
 def lihat_pengiriman():
@@ -65,6 +88,7 @@ def update_pengiriman():
         if pengiriman['id'] == id_pengiriman:
             status = input("Status baru: ")
             pengiriman['status'] = status
+            save_data_to_csv()
             print("Status pengiriman berhasil diperbarui.")
             return
     print("Pengiriman tidak ditemukan.")
@@ -76,6 +100,7 @@ def hapus_pengiriman():
     id_pengiriman = input("ID Pengiriman yang akan dihapus: ")
     global pengiriman_list
     pengiriman_list = [p for p in pengiriman_list if p['id'] != id_pengiriman]
+    save_data_to_csv()
     print("Pengiriman berhasil dihapus.")
 
 # Fungsi Tracking Pengiriman (Hanya untuk Customer)
