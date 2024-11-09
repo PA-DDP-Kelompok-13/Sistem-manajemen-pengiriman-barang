@@ -96,5 +96,96 @@ Di menu 5 yaitu admin bisa melakukan shorting berdasarkan nama barang, kota tuju
 
 ![WhatsApp Image 2024-11-09 at 13 38 50_e60ab0e4](https://github.com/user-attachments/assets/be3d2aaa-e3ff-41fa-93f0-7e1c367ac884)
 Di menu 6 ini untuk keluar dan kembali ke menu utama
+<br><br>
 
+## Susunan Code
 
+![code](https://github.com/user-attachments/assets/89697b8e-0b66-4097-9928-0f10a0e2c2ea)
+- Mengimpor PrettyTable untuk membuat dan menampilkan data dalam bentuk tabel yang lebih rapi dan terstruktur, seperti pada menu login atau daftar pengiriman.
+- Mengimpor csv yang digunakan untuk membaca dan menulis data dalam format CSV. ini berguna untuk menyimpan dan memuat data pengguna (Akun_Pengguna.csv) dan pengiriman (All_Data_Pengiriman.csv).
+- Mengimpor pwinput untuk mengamankan input password dari pengguna. Ini memungkinkan pengguna untuk mengetikkan password tanpa terlihat di layar.
+- Mendefinisikan variabel konstan yang menyatakan status pengiriman yang belum dibayar. Digunakan untuk menunjukkan status pengiriman ketika pengiriman baru dibuat dan belum diproses lebih lanjut.
+- Mendefinisikan variabel konstan yang menunjukkan status pengiriman yang sedang menunggu antrian untuk diproses. Ini digunakan setelah pengiriman berhasil dibuat dan menunggu untuk diproses lebih lanjut.
+- Mendefinisikan nama file CSV yang digunakan untuk menyimpan data akun pengguna, termasuk username, password, dan saldo mereka. Program membaca dan menulis data di file ini untuk melakukan otentikasi dan memanipulasi saldo pengguna.
+- Mendefinisikan nama file CSV yang menyimpan data pengiriman. File ini digunakan untuk menyimpan dan membaca semua informasi tentang pengiriman yang dibuat, termasuk nama pengirim, penerima, status pengiriman, dll.
+<br>
+
+![fungsi tampilan_login](https://github.com/user-attachments/assets/4385997d-65f6-4a4d-b7ba-12f3f5c2af63)
+- Fungsi ini menggunakan PrettyTable untuk menampilkan menu login dengan opsi "ADMIN," "CUSTOMER," dan "KEMBALI."
+<br>
+
+![fungsi registrasi_akun](https://github.com/user-attachments/assets/d564e7bd-9c92-45a5-b4e7-adfb09062ee4)
+- Fungsi ini mengharuskan pengguna untuk membuat username dan password, lalu menyimpannya dalam file Akun_Pengguna.csv. Saldo awal pengguna diatur ke 0.
+<br>
+
+![fungsi validasi_akun](https://github.com/user-attachments/assets/0d52936e-f628-41e4-a296-7611c9a39785)
+- Fungsi ini memvalidasi akun pengguna (customer) dengan mencocokkan username dan password yang dimasukkan dengan data yang ada di Akun_Pengguna.csv. Mengembalikan True jika cocok, False jika tidak.
+<br>
+
+![fungsi validasi_akun_admin](https://github.com/user-attachments/assets/b9c5a703-5410-4924-8c7d-14ba01b9036c)
+- Fungsi ini memvalidasi akun admin dengan username dan password statis ("admin" dan "admin123"). Mengembalikan True jika cocok, False jika tidak.
+<br>
+
+![fungsi tampilan_admin](https://github.com/user-attachments/assets/466af1af-86c0-4a97-9a06-10a0a0c9571e)
+- Fungsi ini menggunakan PrettyTable untuk menampilkan opsi menu admin, seperti mengubah status pengiriman, menghapus pengiriman, melihat data pengiriman, mencari data, menyortir data, dan keluar (LogOut).
+<br>
+
+![fungsi login_admin](https://github.com/user-attachments/assets/8f1b6f90-9b9b-45f7-834e-b630913cdb48)
+- Fungsi ini mengautentikasi admin dan memberikan akses ke menu admin. Setiap opsi pada menu memanggil fungsi yang relevan untuk melaksanakan operasi tertentu.
+<br>
+
+![fungsi tampilan_customer](https://github.com/user-attachments/assets/1efec789-5b6e-4061-915e-37aaca4598b7)
+- Fungsi ini menggunakan PrettyTable untuk menampilkan opsi menu customer, seperti membuat pengiriman, melihat pengiriman, top-up saldo, dan keluar (LogOut).
+<br>
+
+![fungsi login_customer](https://github.com/user-attachments/assets/2a729b84-f99d-400e-8a7a-2901a4e02e74)
+- Fungsi ini mengautentikasi customer dengan username dan password. Jika berhasil, menu customer akan muncul, memberikan opsi untuk membuat pengiriman, melihat pengiriman, melakukan top-up saldo, atau logout.
+<br>
+
+![fungsi buat_pengiriman](https://github.com/user-attachments/assets/21b03d54-d922-4b8c-a0c0-f974f00d47e7)
+- Fungsi ini membuat data pengiriman baru. Pengguna memasukkan detail seperti nama barang, kota tujuan, nama pengirim, nama penerima, tanggal pengiriman, dan status pengiriman yang disetel ke "Menunggu Pembayaran."
+Setelah memasukkan data, pengguna diberi pilihan untuk membayar. Jika memilih "y" (ya), akan memanggil fungsi pembayaran_Pengiriman(username). Jika tidak, pengiriman tertunda.
+<br>
+
+![fungsi tampilan_table](https://github.com/user-attachments/assets/8df3fa75-caff-4a6b-9bc5-65b28d50bbfa)
+- Fungsi ini menampilkan tabel berdasarkan data yang diterima sebagai parameter. Berguna untuk menampilkan data pengiriman dengan rapi.
+<br>
+
+![fungsi lihat_pengiriman](https://github.com/user-attachments/assets/76b9eede-654b-48c0-bec6-1ccd7c6c1a61)
+- Fungsi ini membaca semua data pengiriman dari All_Data_Pengiriman.csv dan menampilkannya dalam bentuk tabel jika ada data yang lengkap.
+<br>
+
+![fungsi top_up](https://github.com/user-attachments/assets/ffd733c9-d3cb-4321-8f87-afd0fa0180c3)
+- Fungsi ini memungkinkan pengguna customer saldo mereka. Setelah saldo ditambah, data diperbarui di Akun_Pengguna.csv.
+<br>
+
+![fungsi lihat_pengiriman_customer](https://github.com/user-attachments/assets/7ec44fea-949e-4492-8d32-25e903f9b8e7)
+- Fungsi ini hanya menampilkan data pengiriman untuk customer tertentu. Jika data pengiriman ditemukan berdasarkan nama pengirim, tabel akan ditampilkan; jika tidak, pesan "Anda Belum Memiliki Riwayat Pengiriman" akan muncul.
+<br>
+
+![fungsi ubah_data](https://github.com/user-attachments/assets/bba4d4ae-2362-412c-8824-1628f22ab79e)
+- Fungsi ini memungkinkan admin mengubah status pengiriman tertentu berdasarkan ID pengiriman. Setelah diubah, data pengiriman yang diperbarui ditampilkan.
+<br>
+
+![fungsi hapus_pengiriman](https://github.com/user-attachments/assets/e020abc3-aa55-41f9-93d1-32a3722291b5)
+- Fungsi ini untuk Menghapus data pengiriman berdasarkan ID pengiriman.
+<br>
+
+![fungsi fitur_cari](https://github.com/user-attachments/assets/f5715536-e9d6-4bf8-ad1f-76e1f8d8ca54)
+- fungsi ini untuk Mencari pengiriman berdasarkan ID atau nama pengirim.
+<br>
+
+![fungsi fitur_sorting](https://github.com/user-attachments/assets/bb990d1c-87e2-4155-a481-99f0001dd0b8)
+- fungsi ini untuk Menyortir data pengiriman berdasarkan kriteria yang sudah ada.
+<br>
+
+![fungsi pembayaran_pengiriman](https://github.com/user-attachments/assets/20af85dc-1d79-41ef-aacc-0c830295f5bd)
+- fungsi ini untuk Memproses pembayaran pengiriman dan memperbarui status pengiriman.
+<br>
+
+![fungsi tampilan_utama](https://github.com/user-attachments/assets/a3acabc4-e224-4df1-8aa9-434765445c78)
+- Menampilkan menu utama yang memungkinkan pengguna untuk memilih antara login sebagai admin, login sebagai customer, atau keluar dari program. Fungsi ini akan menampilkan opsi-opsi tersebut dan mengarahkan pengguna sesuai pilihan yang dipilih. 
+<br>
+<br>
+
+## Disusun Oleh Kelompok 13, Sistem Informasi B2024.
