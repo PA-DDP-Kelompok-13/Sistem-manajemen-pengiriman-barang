@@ -9,6 +9,7 @@
 --------------------------------------------
 <br>
 ## Gambar Flowchart
-![WhatsApp Image 2024-11-09 at 10 18 05_add408dc](https://github.com/user-attachments/assets/8b59971f-9897-4f3f-a5ac-59164c0387ba)
+![Flowchart_PA](https://github.com/user-attachments/assets/1b0f965b-5701-4925-bf31-b0035a62dc43)
+<br>
 
 
