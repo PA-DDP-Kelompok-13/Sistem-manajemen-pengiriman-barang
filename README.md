@@ -90,8 +90,11 @@ Di menu 4 yaitu admin bisa mencari data pengiriman dengan mengetik nama barangny
 <br>
 
 ![WhatsApp Image 2024-11-09 at 13 37 43_86c7a206](https://github.com/user-attachments/assets/e4f7a8cf-3dea-40f0-b5e9-84955b5ee2cd)
+![WhatsApp Image 2024-11-09 at 13 38 08_1b92928e](https://github.com/user-attachments/assets/9512fd7e-05f1-4c1e-82df-2ee8102edfa9)
 Di menu 5 yaitu admin bisa melakukan shorting berdasarkan nama barang, kota tujuan, tanggal pengiriman.
 <br>
 
+![WhatsApp Image 2024-11-09 at 13 38 50_e60ab0e4](https://github.com/user-attachments/assets/be3d2aaa-e3ff-41fa-93f0-7e1c367ac884)
+Di menu 6 ini untuk keluar dan kembali ke menu utama
 
 
